@@ -183,18 +183,16 @@
 		<section class="modal fade" aria-hidden="true" role="dialog" id="no_perm_ques">
 			<div class="modal-dialog">
 			<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close clearfix" data-dismiss="modal" aria-lable="close"><span aria-hidden="true">&times;</span></button><br>
-					</div>
+					
 					<div class="modal-body">
+						<button type="button" class="close clearfix" data-dismiss="modal" aria-lable="close"><span aria-hidden="true">&times;</span></button><br>
 						<p class="text-center clearfix">
 							To vote for this question you must be logged in.<br><br>
 							<a href="/login/?qid=<?php echo $qid; ?>">Login</a> or <a href="/register/">Register</a>
+							<br><br><button type="button" class="btn btn-default pull-right" data-dismiss="modal">close</button>
 						</p>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">close</button>
-					</div>
+					
 				</div>
 			</div>
 		</section>
@@ -203,18 +201,16 @@
 		<section class="modal fade" aria-hidden="true" role="dialog" id="no_perm_ans">
 			<div class="modal-dialog">
 			<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close clearfix" data-dismiss="modal" aria-lable="close"><span aria-hidden="true">&times;</span></button><br>
-					</div>
+					
 					<div class="modal-body">
+						<button type="button" class="close clearfix" data-dismiss="modal" aria-lable="close"><span aria-hidden="true">&times;</span></button><br>
 						<p class="text-center clearfix">
 							To vote for this answer you must be logged in.<br><br>
 							<a href="/login/?qid=<?php echo $qid; ?>">Login</a> or <a href="/register/">Register</a>
+							<br><br><button type="button" class="btn btn-default pull-right" data-dismiss="modal">close</button>
 						</p>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">close</button>
-					</div>
+					
 				</div>
 			</div>
 		</section>

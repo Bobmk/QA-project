@@ -1,5 +1,5 @@
 <div>
-	<h2 class="col-xs-offset-4">Register</h2><br><br>
+	<p class="h2 text-center">Register</p><br><br>
 
 		<?php 
 		if(isset($_SESSION['errmsg'])){

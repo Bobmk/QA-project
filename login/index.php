@@ -19,7 +19,7 @@ session_start();
 		<div class="container">
 
 			<div>
-				<h2 class="col-xs-offset-4">Login</h2><br><br>
+				<p class="h2 text-center">Login</p><br><br>
 
 				<?php 
 				if(isset($_SESSION['errmsg'])){
