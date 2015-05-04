@@ -1,0 +1,73 @@
+@import "variables.less";
+@import "mixins.less";
+
+// overriding bootstrap styles
+body{
+	background-color: lighten(@gray-lighter,0%);
+	color: #000;
+}
+a{
+	color: red;
+	&:hover{
+		color: darken(red, 15%);
+	}
+}
+.pagination .disabled{
+	> span,
+    > span:hover,
+    > span:focus,
+    > a,
+    > a:hover,
+    > a:focus {
+    	pointer-events: none;
+    }
+}
+.pagination .active{
+	> span,
+    > span:hover,
+    > span:focus,
+    > a,
+    > a:hover,
+    > a:focus {
+    	pointer-events: none;
+    }
+}
+.nav-tabs{
+	> li{
+		> a {
+			background-color: lighten(@gray-light,20%);
+			color: @gray-dark;
+			&:hover,
+			&:focus{
+				color: @nav-tabs-active-link-hover-color;
+			}
+		}
+		&.active > a{
+			color: white;
+			background-color: @gray;
+			pointer-events: none;
+		}
+	}
+}
+
+// custom styles
+.ques-panel{
+	background-color: darken(Tan,8%);
+}
+.ans-panel{
+	background-color: darken(aquamarine,45%);
+}
+.ques-shown{
+	background-color: darken(@gray-light,0%);
+}
+.hrow{
+	// margin-top: @line-height-computed;
+	margin-bottom: @line-height-computed;
+	border-top: 2px solid;
+	border-bottom: 2px solid;
+	border-color: lighten(black, 30%);
+}
+.votes{
+	// font-size: 1.5em;
+	line-height: 2.1em;
+}
