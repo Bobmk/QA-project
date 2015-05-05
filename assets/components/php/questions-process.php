@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$cr=parse_ini_file("../credential.ini");
+$cr=parse_ini_file("../assets/components/credential.ini");
 $host=$cr['host'];
 $user=$cr['user'];
 $pass=$cr['pass'];

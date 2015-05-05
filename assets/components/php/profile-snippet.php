@@ -1,6 +1,16 @@
 <?php
 session_start();
-require_once "../assets/components/php/sql-connect.php";
+
+$cr=parse_ini_file("../assets/components/credential.ini");
+$host=$cr['host'];
+$user=$cr['user'];
+$pass=$cr['pass'];
+$db=$cr['db'];
+
+if(!($sqlhandle=mysqli_connect($host,$user,$pass,$db))){
+	die(mysqli_error($sqlhandle));
+}
+
 require_once "../assets/components/php/functions.php";
 
 if(isset($_SESSION['user_name'],$_SESSION['user_id'])){
