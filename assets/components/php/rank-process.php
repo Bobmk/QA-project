@@ -1,14 +1,6 @@
 <?php
 
-$cr=parse_ini_file("../credential.ini");
-$host=$cr['host'];
-$user=$cr['user'];
-$pass=$cr['pass'];
-$db=$cr['db'];
-
-if(!($sqlhandle=mysqli_connect($host,$user,$pass,$db))){
-	echo "Error connecting to database";
-}
+require_once "sql-connect.php";
 
 if(isset($_POST['question_up'])){
 	$ques_id=$_POST['question_up'];
@@ -61,7 +53,7 @@ if(isset($_POST['ans_up'],$_POST['ans_qid'],$_POST['ans_uid'],$_POST['ans_ans'])
 	unset($_POST['ans_up'],$_POST['ans_qid'],$_POST['ans_uid'],$_POST['ans_ans']);
 	$query="SELECT rank FROM answers WHERE qid=$ans_qid AND uid=$ans_uid AND answered='$ans_ans'";
 	if(!($result=mysqli_query($sqlhandle, $query))){
-		echo mysqli_error($sqlhandle);
+		// echo mysqli_error($sqlhandle);
 	}else{
 		$res=mysqli_fetch_assoc($result);
 		mysqli_free_result($result);
@@ -85,7 +77,7 @@ if(isset($_POST['ans_down'],$_POST['ans_qid'],$_POST['ans_uid'],$_POST['ans_ans'
 	unset($_POST['ans_down'],$_POST['ans_qid'],$_POST['ans_uid'],$_POST['ans_ans']);
 	$query="SELECT rank FROM answers WHERE qid=$ans_qid AND uid=$ans_uid AND answered='$ans_ans'";
 	if(!($result=mysqli_query($sqlhandle, $query))){
-		echo mysqli_error($sqlhandle);
+		// echo mysqli_error($sqlhandle);
 	}else{
 		$res=mysqli_fetch_assoc($result);
 		mysqli_free_result($result);

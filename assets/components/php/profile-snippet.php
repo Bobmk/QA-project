@@ -7,7 +7,7 @@ if(isset($_SESSION['user_name'],$_SESSION['user_id'])){
 	if($_SESSION['user_name']!=="" && $_SESSION['user_id']!==""){
 		$query="SELECT * FROM users WHERE uid={$_SESSION['user_id']}";
 		if(!($res=mysqli_query($sqlhandle,$query))){
-			echo mysqli_error($sqlhandle);
+			die(mysqli_error($sqlhandle));
 		}
 		$result=mysqli_fetch_assoc($res);
 		$_SESSION['user_name']=$result['uname'];

@@ -1,16 +1,7 @@
 <?php
 session_start();
 
-$cr=parse_ini_file("../credential.ini");
-$host=$cr['host'];
-$user=$cr['user'];
-$pass=$cr['pass'];
-$db=$cr['db'];
-
-if(!($sqlhandle=mysqli_connect($host,$user,$pass,$db))){
-	echo "Error connecting to database";
-}
-
+require_once "sql-connect.php";
 require_once 'functions.php';
 
 if(isset($_POST['id'],$_POST['pass'])){
@@ -49,13 +40,13 @@ if(isset($_POST['uid'],$_POST['nuname'],$_POST['submit'])){
 	}
 	$query.=" WHERE uid={$uid}";
 	if(!($res=mysqli_query($sqlhandle,$query))){
-		echo mysqli_error($sqlhandle);
+		die(mysqli_error($sqlhandle));
 	}
 	$_SESSION['update_success']=mysqli_affected_rows($sqlhandle);
 
 	$query="SELECT * FROM users WHERE uid={$uid}";
 	if(!($res=mysqli_query($sqlhandle,$query))){
-		echo mysqli_error($sqlhandle);
+		die(mysqli_error($sqlhandle));
 	}
 	$result=mysqli_fetch_assoc($res);
 	mysqli_free_result($res);

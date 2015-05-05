@@ -1,4 +1,4 @@
-<?php require_once "../assets/components/php/process-ask.php"; ?>
+<?php session_start(); ?>
 <!Doctype html>
 <html>
 	<head>
@@ -15,7 +15,7 @@
 			<?php
 			if(isset($_SESSION['user_name'])){
 			?>
-			<form class="form-horizontal" action="/ask/" method="post" role="form">
+			<form class="form-horizontal" action="/assets/components/php/process-ask.php" method="post" role="form">
 
 				<div class="form-group">
 					<label id="title" class="control-label col-sm-1">Title</label>
@@ -57,5 +57,4 @@
 	<?php require_once "../assets/components/php/scripts-tag.php"; ?>
 	<script src="/assets/js/ask.js"></script>
 	</body>
-	<?php require_once "../assets/components/php/sql-disconnect.php"; ?>
 </html>

@@ -1,14 +1,7 @@
 <?php 
 session_start();
-$cr=parse_ini_file("../credential.ini");
-$host=$cr['host'];
-$user=$cr['user'];
-$pass=$cr['pass'];
-$db=$cr['db'];
 
-if(!($sqlhandle=mysqli_connect($host,$user,$pass,$db))){
-	echo "Error connecting to database";
-}
+require_once "sql-connect.php";
 require_once "functions.php";
 
 $entered_name="";
@@ -23,7 +16,7 @@ if(isset($_POST['username'],$_POST['email'],$_POST['password'],$_POST['submit'])
 	$search="SELECT * FROM users WHERE login='{$email}'";
 
 	if(!$res=mysqli_query($sqlhandle,$search)){
-		echo mysqli_error($sqlhandle);
+		die(mysqli_error($sqlhandle));
 	}
 	$answer=mysqli_fetch_assoc($res);
 	mysqli_free_result($res);

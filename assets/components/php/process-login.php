@@ -1,16 +1,8 @@
 <?php 
 session_start();
+
 require_once "functions.php";
-
-$cr=parse_ini_file("../credential.ini");
-$host=$cr['host'];
-$user=$cr['user'];
-$pass=$cr['pass'];
-$db=$cr['db'];
-
-if(!($sqlhandle=mysqli_connect($host,$user,$pass,$db))){
-	echo "Error connecting to database";
-}
+require_once "sql-connect.php";
 
 $target_page=false;
 if(isset($_POST['qid'])){
@@ -61,4 +53,6 @@ if(isset($_POST['login'],$_POST['password'],$_POST['submit'])){
 		$_SESSION['errmsg']="must enter username/password";
 		redirect_to('/login/');
 	}
+}else{
+	redirect_to('/login');
 }

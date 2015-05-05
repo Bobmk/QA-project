@@ -10,14 +10,14 @@ if(isset($sort_order)){
 $select="SELECT qid,title,uid,rank,asked FROM questions ORDER BY $sort_field desc LIMIT $q_start,$q_no";
 
 if(!($result=mysqli_query($sqlhandle,$select))){
-	echo mysqli_error($sqlhandle);
+	die(mysqli_error($sqlhandle));
 }
 
 while($row=mysqli_fetch_assoc($result)){
 	$query="SELECT count(*) FROM answers WHERE qid={$row['qid']}";
 	$answer=0;
 	if(!($search=mysqli_query($sqlhandle, $query))){
-		echo mysqli_error($sqlhandle);
+		die(mysqli_error($sqlhandle));
 	}else{
 		$ans=mysqli_fetch_assoc($search);
 		mysqli_free_result($search);

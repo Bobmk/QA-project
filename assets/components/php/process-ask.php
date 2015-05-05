@@ -1,8 +1,7 @@
-<?php
-session_start(); 
+<?php 
 
-require_once "../assets/components/php/sql-connect.php";
-require_once "../assets/components/php/functions.php";
+require_once "sql-connect.php";
+require_once "functions.php";
 
 if(isset($_POST['title'],$_POST['content'],$_POST['uid'],$_POST['submit'])){
 	$title=$_POST['title'];
@@ -17,11 +16,11 @@ if(isset($_POST['title'],$_POST['content'],$_POST['uid'],$_POST['submit'])){
 		$query="INSERT INTO questions(title,content,uid,asked) VALUES('{$title}','{$content}',{$uid},utc_timestamp())";
 
 		if(!($res=mysqli_query($sqlhandle,$query))){
-			echo mysqli_error($sqlhandle);
+			die(mysqli_error($sqlhandle));
 		}else{
 			$qry="SELECT q_asked FROM users WHERE uid=$uid";
 			if(!($result=mysqli_query($sqlhandle,$qry))){
-				echo mysqli_error($sqlhandle);
+				die(mysqli_error($sqlhandle));
 			}else{
 				$ans=mysqli_fetch_assoc($result);
 				mysqli_free_result($result);
@@ -29,10 +28,12 @@ if(isset($_POST['title'],$_POST['content'],$_POST['uid'],$_POST['submit'])){
 				$count++;
 				$query="UPDATE users SET q_asked={$count} WHERE uid={$uid}";
 				if(!($res=mysqli_query($sqlhandle,$query))){
-					echo mysqli_error($sqlhandle);
+					die(mysqli_error($sqlhandle));
 				}
 			}
 			redirect_to('/');
 		}
 	}
+}else{
+	redirect_to('/ask');
 }
