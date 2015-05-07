@@ -33,6 +33,7 @@ if(isset($_GET['p'])){
 }
 
 $page_count=1; // it will be the no of calculated pages
+
 $query="SELECT CEIL(COUNT(*)/$q_no) cnt FROM questions";
 if(!($result=mysqli_query($sqlhandle, $query))){
 	echo mysqli_error($sqlhandle);
@@ -89,9 +90,7 @@ $range=4; // no of buttons shown in pagination
 						<?php include_once "assets/components/php/snippet-main.php"; ?>
 					</div><!-- tab-content -->
 				</section>
-				<?php
-					
-				?>
+				
 				<section>
 					<nav>
 						<ul class="pagination">
@@ -133,10 +132,7 @@ $range=4; // no of buttons shown in pagination
 										><a href="/?p=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 							<?php
 									}
-								}else{
-							?>
-
-							<?php 
+								}else{ 
 									for($i=$page,$range=1;$i<=$page_count;$i++,$range++){
 							?>
 									<li
@@ -178,16 +174,16 @@ $range=4; // no of buttons shown in pagination
 					</nav>
 				</section>
 
-				<?php
-				}else{
-				?>
+			<?php
+			}else{
+			?>
 
-					<h3>Page not found</h3>
-					<a href="/">return to home page</a>
+				<h3>Page not found</h3>
+				<a href="/">return to home page</a>
 
-				<?php
-				}
-				?>			
+			<?php
+			}
+			?>			
 
 			</div><!-- container -->
 

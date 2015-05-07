@@ -16,11 +16,11 @@
 			
 			<div class="navbar-right">
 
-				<form class="navbar-form navbar-left" role="search" method="POST" action="/search/">
+				<form class="navbar-form navbar-left" role="search" method="GET" action="/search/">
 					<div class="form-group">
 						<input type="search" class="form-control" name="term" placeholder="Search">
 					</div>
-					<button type="submit" class="btn btn-default" name="submit" value="submit">Search</button>
+					<button type="submit" class="btn btn-default">Search</button>
 				</form>
 				
 				<ul class="nav navbar-nav">

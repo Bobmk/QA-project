@@ -12,20 +12,45 @@ if(!($sqlhandle=mysqli_connect($host,$user,$pass,$db))){
 	die(mysqli_error($sqlhandle));
 }	
 
-if(isset($_POST['term'],$_POST['submit']) && !empty($_POST['term'])){
-	$term=mysqli_real_escape_string($sqlhandle,trim($_POST['term']));
-	unset($_POST['term'],$_POST['submit']);
-	$query="SELECT * FROM questions WHERE MATCH(title,content) AGAINST('$term' WITH QUERY EXPANSION)";
-	if(!$result=mysqli_query($sqlhandle,$query)){
-		die(mysqli_error($sqlhandle));
-	}
+if(isset($_GET['term']) && !empty($_GET['term'])){
+	$term=mysqli_real_escape_string($sqlhandle,trim($_GET['term']));
+	unset($_GET['term']);
 }else{
 	$redir=$_SERVER['HTTP_REFERER'];
-	if($_SERVER['SCRIPT_NAME']=="/search/index.php"){
+	if($redir=="http://".$_SERVER['HTTP_HOST']."search/index.php"){
 		$redir="/";
 	}
 	redirect_to("$redir");
 }
+
+$q_no=20; // no of questions show per page
+$q_start=0;
+$page=1;
+if(isset($_GET['p'])){
+	$page=$_GET['p'];
+	unset($_GET['p']);
+	$q_start=$q_no*($page-1);
+}
+
+$page_count=1; // it will be the no of calculated pages
+
+$range=4; // maximum no of buttons with number shown in pagination
+
+$query="SELECT * FROM questions WHERE MATCH(title,content) AGAINST('$term' WITH QUERY EXPANSION) LIMIT $q_start,$q_no";
+if(!$result=mysqli_query($sqlhandle,$query)){
+	die(mysqli_error($sqlhandle));
+}
+
+$query="SELECT CEIL(COUNT(*)/$q_no) cnt FROM questions WHERE MATCH(title,content) AGAINST('$term' WITH QUERY EXPANSION)";
+if(!($p_cnt=mysqli_query($sqlhandle, $query))){
+	echo mysqli_error($sqlhandle);
+}else{
+	$res=mysqli_fetch_assoc($p_cnt);
+	mysqli_free_result($p_cnt);
+	$page_count=$res['cnt'];
+}
+
+$encoded_term=urlencode($term);
 ?>
 <!doctype html>
 <html>
@@ -75,9 +100,94 @@ if(isset($_POST['term'],$_POST['submit']) && !empty($_POST['term'])){
 							</section>
 				<?php
 						}
+				?>							
+								
+						<section>
+							<nav>
+								<ul class="pagination">
+									<li
+										<?php
+											if($page==1){
+												echo "class=\"disabled\"";
+											}
+										?>
+									><a href="/search?term=<?php echo $encoded_term; ?>"><span aria-hidden="true" class="glyphicon glyphicon-fast-backward"></span></a></li>
+									<li
+										<?php
+											if($page==1){
+												echo "class=\"disabled\"";
+											}
+										?>
+									><a href="/search?term=<?php echo $encoded_term; ?>&p=<?php echo $page-1; ?>"><span aria-hidden="true" class="glyphicon glyphicon-step-backward"></span></a></li>
+									<?php
+										if($page>1 && $page_count>$range){
+									?>
+										<li><a>...</a></li>
+									<?php
+										}
+									?>
+									<?php
+										if($page>$page_count-$range){
+											$mod_start=$page_count-$range+1;
+											if($mod_start<1){
+												$mod_start=1;
+											}
+											for($i=$mod_start;$i<=$page_count;$i++){
+									?>
+												<li
+													<?php
+														if($i==$page){
+															echo "class=\"active\"";
+														}
+													?>
+												><a href="/search?term=<?php echo $encoded_term; ?>&p=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+									<?php
+											}
+										}else{ 
+											for($i=$page,$range=1;$i<=$page_count;$i++,$range++){
+									?>
+											<li
+												<?php
+													if($i==$page){
+														echo "class=\"active\"";
+													}
+												?>
+											><a href="/search?term=<?php echo $encoded_term; ?>&p=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+									<?php
+												if($range==4){
+													break;
+												}
+											}
+										}
+									?>
+									<?php
+										if($page<=$page_count-$range){
+									?>
+										<li><a>...</a></li>
+									<?php
+										}
+									?>
+									<li
+										<?php
+											if($page==$page_count){
+												echo "class=\"disabled\"";
+											}
+										?>
+									><a href="/search?term=<?php echo $encoded_term; ?>&p=<?php echo $page+1; ?>"><span aria-hidden="true" class="glyphicon glyphicon-step-forward"></span></a></li>
+									<li
+										<?php
+											if($page==$page_count){
+												echo "class=\"disabled\"";
+											}
+										?>
+									><a href="/search?term=<?php echo $encoded_term; ?>&p=<?php echo $page_count; ?>"><span aria-hidden="true" class="glyphicon glyphicon-fast-forward"></span></a></li>
+								</ul>
+							</nav>
+						</section>
+				<?php
 					}else{
 				?>
-					<p class="col-sm-offset-1">
+					<p class="col-sm-offset-1 h3">
 						No data found
 					</p>
 				<?php
