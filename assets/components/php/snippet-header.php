@@ -13,8 +13,16 @@
 		</section><!-- navbar-header -->
 
 		<section class="collapse navbar-collapse" id="menu">
-
+			
 			<div class="navbar-right">
+
+				<form class="navbar-form navbar-left" role="search" method="POST" action="/search/">
+					<div class="form-group">
+						<input type="search" class="form-control" name="term" placeholder="Search">
+					</div>
+					<button type="submit" class="btn btn-default" name="submit" value="submit">Search</button>
+				</form>
+				
 				<ul class="nav navbar-nav">
 					<li><a href="/" data-placement="bottom" data-toggle="tooltip" title="Home"><span class="glyphicon glyphicon-home hidden-xs" aria-hidden="true"></span><span class="visible-xs"> Home</span></a></li>
 					<li><a href="/ask/" data-placement="bottom" data-toggle="tooltip" title="Ask a question"><span class="glyphicon glyphicon-question-sign hidden-xs" aria-hidden="true"></span><span class="visible-xs"> Ask a question</span></a></li>
@@ -45,9 +53,9 @@
 					}
 					?>
 				</ul>
-			</div>
+			</div><!-- navbar-right -->
 					
 		</section><!-- collapse -->
 		
-	</div>
+	</div><!-- container -->
 </nav>

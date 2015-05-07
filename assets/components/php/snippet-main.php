@@ -33,7 +33,7 @@ while($row=mysqli_fetch_assoc($result)){
 			<div class="col-xs-6 col-sm-1">
 				<p class="text-center">Answers <?php echo $answer ?></p>
 			</div>
-			<a href="questions?qid=<?php echo $row['qid']; ?>" class="h4 col-xs-12 col-sm-6 col-md-7 col-sm-offset-1 col-md-offset-0"><?php echo $row['title']; ?></a><br>
+			<a href="/questions?qid=<?php echo $row['qid']; ?>" class="h4 col-xs-12 col-sm-6 col-md-7 col-sm-offset-1 col-md-offset-0"><?php echo $row['title']; ?></a><br>
 			<div class="pull-right small col-sm-3">
 				<?php
 					$name="SELECT uname FROM users WHERE uid={$row['uid']}";

@@ -2,10 +2,16 @@
 
 $sort_order="newest"; // sort order of the questions
 
+if(isset($_SESSION['sort'])){
+	$sort_order=$_SESSION['sort'];
+}
+
 if(isset($_GET['sort'])){
 	$sort_order=$_GET['sort'];
 	unset($_GET['sort']);
 }
+
+$_SESSION['sort']=$sort_order;
 
 $cr=parse_ini_file("assets/components/credential.ini");
 $host=$cr['host'];
