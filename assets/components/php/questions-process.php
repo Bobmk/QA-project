@@ -43,7 +43,7 @@ if(isset($_POST['qid'],$_POST['uid'],$_POST['content'],$_POST['submit'])){
 
 if(isset($_GET['qid'])){
 	$qid=$_GET['qid'];
-	$query="SELECT qid,title,content,uid,asked,rank FROM questions WHERE qid={$qid}";
+	$query="SELECT qid,title,content,uid,asked,rank,utc_timestamp() AS utctime FROM questions WHERE qid={$qid}";
 	$title_present=true;
 	if(!($result=mysqli_query($sqlhandle,$query))){
 		die(mysqli_error($sqlhandle));
@@ -73,5 +73,7 @@ if(isset($_GET['qid'])){
 		// }	
 	}
 }
+
+require_once '../assets/components/php/functions.php';
 
 ?>

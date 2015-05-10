@@ -51,5 +51,54 @@ function password_check($password,$existing_hash){
 		return false;
 }
 
+function diff_time_format($big,$small){
+	$d1=strtotime($big);
+	$d2=strtotime($small);
+
+	$seconds=($d1-$d2);
+	if($seconds<60){
+		if($seconds<=1){
+			return "$seconds second ago";
+		}
+		return "$seconds seconds ago";
+	}
+	$minutes=floor($seconds/60);
+	if($minutes<60){
+		if($minutes==1){
+			return "1 minute ago";
+		}
+		return "$minutes minutes ago";
+	}
+	$hours=floor($minutes/60);
+	if($hours<24){
+		if($hours==1){
+			return "1 hour ago";
+		}
+		return "$hours hours ago";
+	}
+	$days=floor($hours/24);
+	if($days<30){
+		if($days==1){
+			return "1 day ago";
+		}
+		return "$days days ago";
+	}
+	$months=floor($days/30);
+	if($months<12){
+		if($months==1){
+			return "1 month ago";
+		}
+		return "$months months ago";
+	}
+	$date=date_parse($small);
+	$mons=array("","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+	$mod_min=$date['minute'];
+	if($mod_min<10){
+		$mod_min="0".$date['minute'];
+	}
+	$date_string=$mons[$date['month']]." ".$date['day']." ".$date['year']." at ".$date['hour'].":".$mod_min;
+	return $date_string;
+}
+
 
 ?>

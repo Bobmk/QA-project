@@ -45,6 +45,7 @@ if(!($result=mysqli_query($sqlhandle, $query))){
 
 $range=4; // no of buttons shown in pagination
 
+require_once 'assets/components/php/functions.php';
 ?>
 <!DOCTYPE html>
 <html>

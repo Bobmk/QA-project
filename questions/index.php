@@ -60,7 +60,7 @@
 									if($name){
 										echo $name['uname']."<br>";
 									}
-									echo "asked ".$ans['asked'];
+									echo "asked ".diff_time_format($ans['utctime'],$ans['asked']);
 									mysqli_free_result($res);
 									$get_answers="SELECT count(*) FROM answers WHERE qid={$ans['qid']}";
 									$get_ans=0;
@@ -83,7 +83,7 @@
 
 					<section><!-- answers part -->
 					<?php
-						$query="SELECT uid,content,answered,rank FROM answers WHERE qid={$ans['qid']} ORDER BY rank desc,answered desc";
+						$query="SELECT uid,content,answered,rank,utc_timestamp() AS utctime FROM answers WHERE qid={$ans['qid']} ORDER BY rank desc,answered desc";
 						if(!$result=mysqli_query($sqlhandle,$query)){
 							mysqli_error($sqlhandle);
 						}
@@ -123,7 +123,7 @@
 										if($name){
 											echo $name['uname']."<br>";
 										}
-										echo "answered ".$row['answered'];
+										echo "answered ".diff_time_format($row['utctime'],$row['answered']);
 									?>
 									</div><!-- user info part -->
 
