@@ -5,7 +5,8 @@ $(function(){
 		 ans_up=$('.ans_up'),
 		 ans_down=$('.ans_down'),
 		 ans_part=$('.ans_part'),
-		 ques_part=$('#ques_part');
+		 ques_part=$('#ques_part'),
+		 usr_id=$('#usr_id');
 
 //Rich Text area
 	var r_text=$('#rich-text');
@@ -30,12 +31,19 @@ $(function(){
 	ques_up.click(function(){
 		if($(this).siblings('span').data('update')){
 			var ques=$(this).siblings('span').data('qid');
+			var usr=usr_id.data('uid');
 			$.ajax({
 				url: '/assets/components/php/rank-process.php',
 				type: 'POST',
-				data: {question_up: ques},
+				data: {question_up: ques,user: usr},
 				success: function(data){
-					ques_up.siblings('span').text(data);
+					if(data==="owner"){
+						$('#no_own_ques').modal();
+					}else if(data==="voted"){
+						$('#no_vote_ques').modal();
+					}else{
+						ques_up.siblings('span').text(data);
+					}
 				},
 				error: function(){
 					alert("error during question rank up");
@@ -50,12 +58,20 @@ $(function(){
 	ques_down.click(function(){
 		if($(this).siblings('span').data('update')){
 			var ques=$(this).siblings('span').data('qid');
+			var usr=usr_id.data('uid');
 			$.ajax({
 				url: '/assets/components/php/rank-process.php',
 				type: 'POST',
-				data: {question_down: ques},
+				data: {question_down: ques,user: usr},
 				success: function(data){
-					ques_down.siblings('span').text(data);
+					if(data==="owner"){
+						$('#no_own_ques').modal();
+					}else if(data==="voted"){
+						$('#no_vote_ques').modal();
+					}
+					else{
+						ques_down.siblings('span').text(data);
+					}
 				},
 				error: function(){
 					alert("error during question rank down");
@@ -72,13 +88,23 @@ $(function(){
 			var a_qid=$(this).siblings('span').data('qid'),
 				 a_uid=$(this).siblings('span').data('uid'),
 				 a_ans=$(this).siblings('span').data('answered'),
-				 s_id=$(this);
+				 s_id=$(this),
+				 usr=usr_id.data('uid');
+			if(usr==a_uid){
+				$('#no_own_ans').modal();
+				return false;
+			}
 			$.ajax({
 				url: '/assets/components/php/rank-process.php',
 				type: 'POST',
-				data: { ans_up: true, ans_qid: a_qid, ans_uid: a_uid, ans_ans: a_ans },
+				data: { ans_up: true, ans_qid: a_qid, ans_uid: a_uid, ans_ans: a_ans, ans_usr: usr },
 				success: function(data){
-					s_id.siblings('span').text(data);
+					if(data=="voted"){
+						$('#no_vote_ans').modal();
+					}
+					else{
+						s_id.siblings('span').text(data);
+					}
 				},
 				error: function(){
 					alert("error during answer rank up");
@@ -95,13 +121,23 @@ $(function(){
 			var a_qid=$(this).siblings('span').data('qid'),
 				 a_uid=$(this).siblings('span').data('uid'),
 				 a_ans=$(this).siblings('span').data('answered'),
-				 s_id=$(this);
+				 s_id=$(this),
+				 usr=usr_id.data('uid');
+			if(usr==a_uid){
+				$('#no_own_ans').modal();
+				return false;
+			}
 			$.ajax({
 				url: '/assets/components/php/rank-process.php',
 				type: 'POST',
-				data: { ans_down: true, ans_qid: a_qid, ans_uid: a_uid, ans_ans: a_ans },
+				data: { ans_down: true, ans_qid: a_qid, ans_uid: a_uid, ans_ans: a_ans, ans_usr: usr },
 				success: function(data){
-					s_id.siblings('span').text(data);
+					if(data=="voted"){
+						$('#no_vote_ans').modal();
+					}
+					else{
+						s_id.siblings('span').text(data);
+					}
 				},
 				error: function(){
 					alert("error during answer rank down");

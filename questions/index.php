@@ -25,6 +25,13 @@
 				?>
 					<h3><?php echo $ans['title']; ?></h3>
 					<br>
+					<span id="usr_id" class="hidden" data-uid="<?php
+															if(isset($_SESSION['user_id'])){
+																echo $_SESSION['user_id'];
+															}else{
+																echo "false";
+															}
+															?>"></span>
 
 					<section  class="panel panel-default ques-panel"><!-- question part -->
 
@@ -208,6 +215,70 @@
 							To vote for this answer you must be logged in.<br><br>
 							<a href="/login/?qid=<?php echo $qid; ?>">Login</a> or <a href="/register/">Register</a>
 							<br><br><button type="button" class="btn btn-default pull-right" data-dismiss="modal">close</button>
+						</p>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+
+		<section class="modal fade" aria-hidden="true" role="dialog" id="no_own_ques">
+			<div class="modal-dialog">
+			<div class="modal-content">
+					
+					<div class="modal-body">
+						<button type="button" class="close clearfix" data-dismiss="modal" aria-lable="close"><span aria-hidden="true">&times;</span></button><br>
+						<p class="text-center clearfix">
+							you can not vote for the question you asked<br><br>
+							<button type="button" class="btn btn-default pull-right" data-dismiss="modal">close</button>
+						</p>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+
+		<section class="modal fade" aria-hidden="true" role="dialog" id="no_own_ans">
+			<div class="modal-dialog">
+			<div class="modal-content">
+					
+					<div class="modal-body">
+						<button type="button" class="close clearfix" data-dismiss="modal" aria-lable="close"><span aria-hidden="true">&times;</span></button><br>
+						<p class="text-center clearfix">
+							you can not vote for your answer<br><br>
+							<button type="button" class="btn btn-default pull-right" data-dismiss="modal">close</button>
+						</p>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+
+		<section class="modal fade" aria-hidden="true" role="dialog" id="no_vote_ques">
+			<div class="modal-dialog">
+			<div class="modal-content">
+					
+					<div class="modal-body">
+						<button type="button" class="close clearfix" data-dismiss="modal" aria-lable="close"><span aria-hidden="true">&times;</span></button><br>
+						<p class="text-center clearfix">
+							you already voted for this question<br><br>
+							<button type="button" class="btn btn-default pull-right" data-dismiss="modal">close</button>
+						</p>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+
+		<section class="modal fade" aria-hidden="true" role="dialog" id="no_vote_ans">
+			<div class="modal-dialog">
+			<div class="modal-content">
+					
+					<div class="modal-body">
+						<button type="button" class="close clearfix" data-dismiss="modal" aria-lable="close"><span aria-hidden="true">&times;</span></button><br>
+						<p class="text-center clearfix">
+							you already voted for this answer<br><br>
+							<button type="button" class="btn btn-default pull-right" data-dismiss="modal">close</button>
 						</p>
 					</div>
 					
