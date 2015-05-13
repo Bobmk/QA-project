@@ -7,7 +7,7 @@
 			unset($_SESSION['errmsg']);
 		?>
 		<section class="clearfix">
-			<div class="alert alert-danger alert-dismissible col-sm-5 col-sm-offset-2" role="alert">
+			<div class="alert alert-danger alert-dismissible col-sm-5 col-sm-offset-3" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php echo $msg; ?>
 			</div>
 		</section>
@@ -72,7 +72,7 @@
 				</div> -->
 
 				<br>
-				<button type="submit" id="submit" value="Submit" name="submit" class="col-xs-offset-4 col-sm-offset-3 btn btn-default">Submit</button>
+				<button type="submit" id="submit" value="Submit" name="submit" class="col-xs-offset-4 col-sm-offset-3 btn btn-default disabled">Submit</button>
 
 			</form>
 

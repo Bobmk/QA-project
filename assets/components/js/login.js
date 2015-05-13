@@ -6,19 +6,19 @@ $(function(){
 	msg=$('#msg');
 
 	login.focus();
-
+	submit.removeClass("disabled");
 //login button active
-	var interval=setInterval(function(){
-		if(submit.hasClass("disabled")){
-			if(login.val()!=="" && password.val()!==""){
-				submit.removeClass("disabled");
-			}
-		}else{
-			if(login.val()==="" || password.val()===""){
-				submit.addClass("disabled");
-			}
-		}
-	},10);
+	// var interval=setInterval(function(){
+	// 	if(submit.hasClass("disabled")){
+	// 		if(login.val()!=="" && password.val()!==""){
+	// 			submit.removeClass("disabled");
+	// 		}
+	// 	}else{
+	// 		if(login.val()==="" || password.val()===""){
+	// 			submit.addClass("disabled");
+	// 		}
+	// 	}
+	// },10);
 
 //checking empty on form submission
 	log_form.submit(function(event){

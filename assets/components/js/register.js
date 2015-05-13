@@ -15,7 +15,7 @@ $(function(){
 //Password Tooltip	 
 	// pass1.tooltip(); // done in main js file
 	name_field.focus();
-
+	sub.removeClass('disabled');
 // Empty name check
 	name_field.focusin(function(){
 		name_emp.addClass("hidden");
