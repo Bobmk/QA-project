@@ -19,7 +19,41 @@ $(function(){
 // Empty name check
 	name_field.focusin(function(){
 		name_emp.addClass("hidden");
-	});	
+	});
+
+// unique name	test
+	name_field.keyup(function(){
+		if(name_field.val()!==""){
+			$.ajax({
+				url: '/assets/components/php/process-register.php',
+				type: 'POST',
+				dataType: 'json',
+				data: {uname: name_field.val()},
+				cache: false,
+				success: function(data){
+					if(data.present===true){
+						name_field.parent().parent().removeClass('has-success');
+						name_field.parent().parent().addClass('has-error');
+						name_field.siblings('.glyphicon').removeClass('glyphicon-ok');
+						name_field.siblings('.glyphicon').addClass('glyphicon-remove');
+					}else{
+						name_field.parent().parent().removeClass('has-error');
+						name_field.parent().parent().addClass('has-success');
+						name_field.siblings('.glyphicon').removeClass('glyphicon-remove');
+						name_field.siblings('.glyphicon').addClass('glyphicon-ok');
+					}
+				},
+				error: function(){
+					alert('error during name check');
+				}
+			});
+		}else{
+			name_field.parent().parent().removeClass('has-success');
+			name_field.parent().parent().removeClass('has-error');
+			name_field.siblings('.glyphicon').removeClass('glyphicon-ok');
+			name_field.siblings('.glyphicon').removeClass('glyphicon-remove');
+		}
+	});
 
 //Valid Email id check	
 	login.focusin(function(){
