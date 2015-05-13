@@ -46,7 +46,7 @@ $(function(){
 					}
 				},
 				error: function(){
-					alert("error during question rank up");
+					// alert("error during question rank up");
 				}
 			});	
 		}else{
@@ -74,7 +74,7 @@ $(function(){
 					}
 				},
 				error: function(){
-					alert("error during question rank down");
+					// alert("error during question rank down");
 				}
 			});
 		}else{
@@ -107,7 +107,7 @@ $(function(){
 					}
 				},
 				error: function(){
-					alert("error during answer rank up");
+					// alert("error during answer rank up");
 				}
 			});
 		}else{
@@ -140,7 +140,7 @@ $(function(){
 					}
 				},
 				error: function(){
-					alert("error during answer rank down");
+					// alert("error during answer rank down");
 				}
 			});
 		}else{
