@@ -44,7 +44,7 @@ $(function(){
 					}
 				},
 				error: function(){
-					alert('error during name check');
+					// alert('error during name check');
 				}
 			});
 		}else{
