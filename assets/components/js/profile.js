@@ -69,7 +69,7 @@ $(function(){
 					// alert(data);
 				},
 				error: function(){
-					alert("error during pass check");
+					// alert("error during pass check");
 				}
 			});
 		}
