@@ -11,9 +11,7 @@ if(isset($_POST['question_up'],$_POST['user'])){
 	if(!($result=mysqli_query($sqlhandle, $search))){
 		die(mysqli_error($sqlhandle));
 	}else{
-		$ans=mysqli_fetch_assoc($result);
-		mysqli_free_result($result);
-		if($ans){
+		while($ans=mysqli_fetch_assoc($result)){
 			if($ans['uid']==$usr_id){
 				echo "voted";
 				exit;
@@ -23,7 +21,7 @@ if(isset($_POST['question_up'],$_POST['user'])){
 
 	$query="SELECT rank,uid FROM questions where qid=$ques_id";
 	if(!($result=mysqli_query($sqlhandle, $query))){
-		// echo mysqli_error($sqlhandle);
+		die(mysqli_error($sqlhandle));
 	}else{
 		$res=mysqli_fetch_assoc($result);
 		mysqli_free_result($result);
@@ -34,15 +32,16 @@ if(isset($_POST['question_up'],$_POST['user'])){
 			}
 			$vote=$res['rank'];
 			$vote++;
-			$query="UPDATE questions SET rank=$vote WHERE qid=$ques_id";
-			if(!($result=mysqli_query($sqlhandle, $query))){
-				// echo mysqli_error($sqlhandle);
+			$query="INSERT INTO questions_voted(uid,qid) VALUES($usr_id,$ques_id)";
+			if(!$result=mysqli_query($sqlhandle, $query)){
+				die(mysqli_error($sqlhandle));
 			}else{
-				$query="INSERT INTO questions_voted(uid,qid) VALUES($usr_id,$ques_id)";
-				if(!$result=mysqli_query($sqlhandle, $query)){
+				$query="UPDATE questions SET rank=$vote WHERE qid=$ques_id";
+				if(!($result=mysqli_query($sqlhandle, $query))){
 					die(mysqli_error($sqlhandle));
+				}else{
+					echo $vote;					
 				}
-				echo $vote;
 			}
 		}
 	}
@@ -57,9 +56,7 @@ if(isset($_POST['question_down'],$_POST['user'])){
 	if(!($result=mysqli_query($sqlhandle, $search))){
 		die(mysqli_error($sqlhandle));
 	}else{
-		$ans=mysqli_fetch_assoc($result);
-		mysqli_free_result($result);
-		if($ans){
+		while($ans=mysqli_fetch_assoc($result)){
 			if($ans['uid']==$usr_id){
 				echo "voted";
 				exit;
@@ -69,7 +66,7 @@ if(isset($_POST['question_down'],$_POST['user'])){
 
 	$query="SELECT rank,uid FROM questions where qid=$ques_id";
 	if(!($result=mysqli_query($sqlhandle, $query))){
-		// echo mysqli_error($sqlhandle);
+		die(mysqli_error($sqlhandle));
 	}else{
 		$res=mysqli_fetch_assoc($result);
 		mysqli_free_result($result);
@@ -80,15 +77,16 @@ if(isset($_POST['question_down'],$_POST['user'])){
 			}
 			$vote=$res['rank'];
 			$vote--;
-			$query="UPDATE questions SET rank=$vote WHERE qid=$ques_id";
-			if(!($result=mysqli_query($sqlhandle, $query))){
-				// echo mysqli_error($sqlhandle);
+			$query="INSERT INTO questions_voted(uid,qid) VALUES($usr_id,$ques_id)";
+			if(!$result=mysqli_query($sqlhandle, $query)){
+				die(mysqli_error($sqlhandle));
 			}else{
-				$query="INSERT INTO questions_voted(uid,qid) VALUES($usr_id,$ques_id)";
-				if(!$result=mysqli_query($sqlhandle, $query)){
+				$query="UPDATE questions SET rank=$vote WHERE qid=$ques_id";
+				if(!($result=mysqli_query($sqlhandle, $query))){
 					die(mysqli_error($sqlhandle));
+				}else{
+					echo $vote;					
 				}
-				echo $vote;
 			}
 		}
 	}
@@ -105,9 +103,7 @@ if(isset($_POST['ans_up'],$_POST['ans_qid'],$_POST['ans_uid'],$_POST['ans_ans'],
 	if(!$res=mysqli_query($sqlhandle, $search)){
 		die(mysqli_error($sqlhandle));
 	}else{
-		$ans=mysqli_fetch_assoc($res);
-		mysqli_free_result($res);
-		if($ans){
+		while($ans=mysqli_fetch_assoc($res)){
 			if($ans['vote_usr_id']==$ans_usr){
 				echo "voted";
 				exit;
@@ -117,22 +113,23 @@ if(isset($_POST['ans_up'],$_POST['ans_qid'],$_POST['ans_uid'],$_POST['ans_ans'],
 
 	$query="SELECT rank FROM answers WHERE qid=$ans_qid AND uid=$ans_uid AND answered='$ans_ans'";
 	if(!($result=mysqli_query($sqlhandle, $query))){
-		// echo mysqli_error($sqlhandle);
+		die(mysqli_error($sqlhandle));
 	}else{
 		$res=mysqli_fetch_assoc($result);
 		mysqli_free_result($result);
 		if($res){
 			$vote=$res['rank'];
 			$vote++;
-			$query="UPDATE answers SET rank=$vote WHERE qid=$ans_qid AND uid=$ans_uid AND answered='$ans_ans'";
-			if(!($result=mysqli_query($sqlhandle, $query))){
-				// echo mysqli_error($sqlhandle);
+			$query="INSERT INTO answers_voted(qid,uid,answered,vote_usr_id) VALUES($ans_qid,$ans_uid,'{$ans_ans}',$ans_usr)";
+			if(!$res=mysqli_query($sqlhandle, $query)){
+				die(mysqli_error($sqlhandle));
 			}else{
-				$query="INSERT INTO answers_voted(qid,uid,answered,vote_usr_id) VALUES($ans_qid,$ans_uid,'{$ans_ans}',$ans_usr)";
-				if(!$res=mysqli_query($sqlhandle, $query)){
+				$query="UPDATE answers SET rank=$vote WHERE qid=$ans_qid AND uid=$ans_uid AND answered='$ans_ans'";
+				if(!($result=mysqli_query($sqlhandle, $query))){
 					die(mysqli_error($sqlhandle));
+				}else{
+					echo $vote;
 				}
-				echo $vote;
 			}
 		}
 	}
@@ -149,9 +146,7 @@ if(isset($_POST['ans_down'],$_POST['ans_qid'],$_POST['ans_uid'],$_POST['ans_ans'
 	if(!$res=mysqli_query($sqlhandle, $search)){
 		die(mysqli_error($sqlhandle));
 	}else{
-		$ans=mysqli_fetch_assoc($res);
-		mysqli_free_result($res);
-		if($ans){
+		while($ans=mysqli_fetch_assoc($res)){
 			if($ans['vote_usr_id']==$ans_usr){
 				echo "voted";
 				exit;
@@ -161,22 +156,23 @@ if(isset($_POST['ans_down'],$_POST['ans_qid'],$_POST['ans_uid'],$_POST['ans_ans'
 
 	$query="SELECT rank FROM answers WHERE qid=$ans_qid AND uid=$ans_uid AND answered='$ans_ans'";
 	if(!($result=mysqli_query($sqlhandle, $query))){
-		// echo mysqli_error($sqlhandle);
+		die(mysqli_error($sqlhandle));
 	}else{
 		$res=mysqli_fetch_assoc($result);
 		mysqli_free_result($result);
 		if($res){
 			$vote=$res['rank'];
 			$vote--;
-			$query="UPDATE answers SET rank=$vote WHERE qid=$ans_qid AND uid=$ans_uid AND answered='$ans_ans'";
-			if(!($result=mysqli_query($sqlhandle, $query))){
-				// echo mysqli_error($sqlhandle);
+			$query="INSERT INTO answers_voted(qid,uid,answered,vote_usr_id) VALUES($ans_qid,$ans_uid,'{$ans_ans}',$ans_usr)";
+			if(!$res=mysqli_query($sqlhandle, $query)){
+				die(mysqli_error($sqlhandle));
 			}else{
-				$query="INSERT INTO answers_voted(qid,uid,answered,vote_usr_id) VALUES($ans_qid,$ans_uid,'{$ans_ans}',$ans_usr)";
-				if(!$res=mysqli_query($sqlhandle, $query)){
+				$query="UPDATE answers SET rank=$vote WHERE qid=$ans_qid AND uid=$ans_uid AND answered='$ans_ans'";
+				if(!($result=mysqli_query($sqlhandle, $query))){
 					die(mysqli_error($sqlhandle));
+				}else{
+					echo $vote;					
 				}
-				echo $vote;
 			}
 		}
 	}
