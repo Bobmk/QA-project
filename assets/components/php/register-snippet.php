@@ -20,17 +20,17 @@
 			<form id="reg_form" class="form-horizontal col-sm-offset-2" action="/assets/components/php/process-register.php" method="post" role="form">
 
 				<div class="form-group has-feedback">
-					<label class="control-label col-sm-3">Name</label>
+					<label class="control-label col-sm-3">User Name</label>
 					<div class="col-sm-6 col-md-5 col-lg-4">
-						<input class="form-control" type="text" name="username" id="name" placeholder="name (for display)" autocomplete="off">
+						<input class="form-control" type="text" name="username" id="name" placeholder="User Name (for display)" autocomplete="off">
 						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 						<span class="text-danger hidden" id="name_emp">this field cannot be empty</span>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-3">Email ID</label>
+					<label class="control-label col-sm-3">Email</label>
 					<div class="col-sm-6 col-md-5 col-lg-4">
-						<input class="form-control" id="login_id" type="email" name="email" placeholder="email id (not shown)">
+						<input class="form-control" id="login_id" type="email" name="email" placeholder="Email (not shown)">
 						<span class="text-danger hidden clearfix" id="em_pat">enter valid email id</span>
 						<span class="text-danger hidden" id="email_emp">this field cannot be empty</span>
 					</div>
@@ -38,7 +38,7 @@
 				<div class="form-group">
 					<label class="control-label col-sm-3">Enter Password</label>
 					<div class="col-sm-6 col-md-5 col-lg-4">
-						<input class="form-control" data-placement="bottom" data-toggle="tooltip" title="8-20 characters, must contain uppercase, lowercase, digit and symbol" type="password" id="pass1" placeholder="enter password">
+						<input class="form-control" data-placement="bottom" data-toggle="tooltip" title="8-20 characters, must contain uppercase, lowercase, digit and symbol" type="password" id="pass1" placeholder="Enter password">
 						<span class="text-danger hidden clearfix" id="pass_pat">match the pattern</span>
 						<span class="text-danger hidden" id="pass1_emp">this field cannot be empty</span>
 					</div>
@@ -46,7 +46,7 @@
 				<div class="form-group">
 					<label class="control-label col-sm-3">Confirm Password</label>
 					<div class="col-sm-6 col-md-5 col-lg-4">
-						<input class="form-control" type="password" id="pass2" name="password" placeholder="confirm password">
+						<input class="form-control" type="password" id="pass2" name="password" placeholder="Confirm password">
 						<span class="text-danger hidden clearfix" id="pass_danger">passwords do not match</span>
 						<span class="text-danger hidden" id="pass2_emp">this field cannot be empty</span>
 					</div>

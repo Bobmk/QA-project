@@ -40,15 +40,15 @@ session_start();
 					
 
 						<div class="form-group">
-							<label class="control-label col-sm-3">Email ID</label>
+							<label class="control-label col-sm-3">Email</label>
 							<div class="col-sm-6 col-md-5 col-lg-4">
-								<input class="form-control" type="text" name="login" id="login" placeholder="email id">
+								<input class="form-control" type="text" name="login" id="login" placeholder="Email">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-3">Password</label>
 							<div class="col-sm-6 col-md-5 col-lg-4">
-								<input class="form-control" type="password" name="password" id="password" placeholder="enter password">
+								<input class="form-control" type="password" name="password" id="password" placeholder="Password">
 							</div>
 						</div>
 						<?php
