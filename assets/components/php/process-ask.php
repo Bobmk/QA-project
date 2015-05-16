@@ -10,7 +10,7 @@ if(isset($_POST['title'],$_POST['content'],$_POST['uid'],$_POST['submit'])){
 	unset($_POST['title'],$_POST['content'],$_POST['uid'],$_POST['submit']);
 
 	if($title!=="" && $content!==""){
-		$title=mysqli_real_escape_string($sqlhandle,trim($title));
+		$title=mysqli_real_escape_string($sqlhandle,htmlentities(trim($title)));
 		$content=mysqli_real_escape_string($sqlhandle,$content);
 
 		$query="INSERT INTO questions(title,content,uid,asked) VALUES('{$title}','{$content}',{$uid},utc_timestamp())";
