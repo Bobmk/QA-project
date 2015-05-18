@@ -2,7 +2,7 @@
 <!Doctype html>
 <html>
 	<?php require_once "../assets/components/php/head-tag.php"; ?>
-	<title>Register</title>
+	<title>Register - Q &amp; A</title>
 	<body>
 	<?php require_once "../assets/components/php/snippet-header.php"; ?>
 	

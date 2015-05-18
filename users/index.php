@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 	<?php require_once "../assets/components/php/head-tag.php"; ?>
-	<title>Profile | <?php echo $_SESSION['user_name']; ?></title>
+	<title>Profile | <?php echo $_SESSION['user_name']; ?> - Q &amp; A</title>
 
 	<body>
 		<?php require_once "../assets/components/php/snippet-header.php"; ?>

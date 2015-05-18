@@ -11,7 +11,7 @@
 		else
 			echo "Page not found";
 		?>
-		</title>
+		 - Q &amp; A</title>
 	</head>
 	<body>
 		<?php include_once "../assets/components/php/snippet-header.php"; ?>

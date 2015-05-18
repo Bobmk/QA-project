@@ -11,7 +11,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 	<?php require_once "../assets/components/php/head-tag.php"; ?>
-	<title>Login</title>
+	<title>Login - Q &amp; A</title>
 
 	<body>
 		<?php require_once "../assets/components/php/snippet-header.php"; ?>

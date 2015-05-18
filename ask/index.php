@@ -2,7 +2,7 @@
 <!Doctype html>
 <html>
 	<head>
-	<title>Ask a Question</title>
+	<title>Ask a Question - Q &amp; A</title>
 	<?php require_once "../assets/components/php/head-tag.php"; ?>
 	</head>
 	<body>
