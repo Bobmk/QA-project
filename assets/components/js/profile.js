@@ -11,6 +11,8 @@ $(function(){
 		 pass_pat=$('#pass_pat'),
 		 pass_diff=$('#pass_diff'),
 		 pass_empty=$('#pass_empty'),
+		 name_emp=$('#name_emp'),
+		 not_uniq=$('#not_uniq'),
 		 pass_wrong=$('#pass_wrong'),
 		 pass_match=$('#pass_match');
 
@@ -18,24 +20,53 @@ $(function(){
 // New password tooltip
 	npass.tooltip();
 
-// functions for interactive form control
-	// function addError(cur,handle1,handle2){
-	// 	handle1.removeClass("hidden");
-	// 	if(handle2){
-	// 		handle2.removeClass("hidden");
-	// 	}
-	// 	cur.next().addClass("glyphicon-remove");
-	// 	cur.parent().parent().addClass("has-error");
-	// }
+// name check
+	nuname.focusin(function(){
+		not_uniq.addClass('hidden');
+		name_emp.addClass('hidden');
+	});
+	nuname.focusout(function(){
+		if(nuname.val()===""){
+			name_emp.removeClass('hidden');
+		}
+		if(nuname.siblings('.glyphicon').hasClass('glyphicon-remove')){
+			not_uniq.removeClass('hidden');
+		}
+	});
 
-	// function removeError(cur,handle1,handle2){
-	// 	handle1.addClass("hidden");
-	// 	if(handle2){
-	// 		handle2.addClass("hidden");
-	// 	}
-	// 	cur.next().removeClass("glyphicon-remove");
-	// 	cur.parent().parent().removeClass("has-error");
-	// }
+// unique name	test
+	nuname.keyup(function(){
+		if(nuname.val()!=="" && nuname.val()!==uname.val()){
+			$.ajax({
+				url: '/assets/components/php/process-register.php',
+				type: 'POST',
+				dataType: 'json',
+				data: {uname: nuname.val()},
+				cache: false,
+				success: function(data){
+					if(data.present===true){
+						nuname.parent().parent().removeClass('has-success');
+						nuname.parent().parent().addClass('has-error');
+						nuname.siblings('.glyphicon').removeClass('glyphicon-ok');
+						nuname.siblings('.glyphicon').addClass('glyphicon-remove');
+					}else{
+						nuname.parent().parent().removeClass('has-error');
+						nuname.parent().parent().addClass('has-success');
+						nuname.siblings('.glyphicon').removeClass('glyphicon-remove');
+						nuname.siblings('.glyphicon').addClass('glyphicon-ok');
+					}
+				},
+				error: function(){
+					// alert('error during name check');
+				}
+			});
+		}else{
+			nuname.parent().parent().removeClass('has-success');
+			nuname.parent().parent().removeClass('has-error');
+			nuname.siblings('.glyphicon').removeClass('glyphicon-ok');
+			nuname.siblings('.glyphicon').removeClass('glyphicon-remove');
+		}
+	});
 
 	var pass_correct=false;
 // Match current password using AJAX
@@ -74,7 +105,6 @@ $(function(){
 			});
 		}
 	});
-		
 
 // password pattern check
 	npass.on('focusin keypress',function(){
@@ -108,6 +138,14 @@ $(function(){
 
 // Submit enable/disable
 	submit.click(function(){
+		if(nuname.val()===""){
+			name_emp.removeClass('hidden');
+			return false;
+		}
+		if(nuname.siblings('.glyphicon').hasClass('glyphicon-remove')){
+			not_uniq.removeClass('hidden');
+			return false;
+		}
 		if(cpass.val() && !pass_correct){
 			pass_wrong.removeClass("hidden");
 			return false;
@@ -136,7 +174,6 @@ $(function(){
 			return true;
 		}
 		if(uname.val()!==nuname.val()){
-			// if(npass.val()==="" )
 			if(cpass.val()===""){
 				pass_err.removeClass("hidden");
 				return false;

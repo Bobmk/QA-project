@@ -11,18 +11,33 @@
 
 			<!-- <section > -->
 				<?php 
-				$update=0;
-				if(isset($_SESSION['update_success'])){
-					$update=$_SESSION['update_success'];
-					unset($_SESSION['update_success']);
-				}
-				if($update){ ?>
+					$update=0;
+					if(isset($_SESSION['update_success'])){
+						$update=$_SESSION['update_success'];
+						unset($_SESSION['update_success']);
+					}
+					if($update){ 
+				?>
 						<section class="clearfix">
 							<div class="alert alert-success alert-dismissible col-sm-5 col-sm-offset-2" role="alert">
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>All setting successfully updated
 							</div>
 						</section>
 				<?php } ?>
+
+				<?php 
+					if(isset($_SESSION['errmsg'])){
+						$msg=$_SESSION['errmsg'];
+						unset($_SESSION['errmsg']);
+				?>
+					<section class="clearfix">
+						<div class="alert alert-danger alert-dismissible col-sm-5 col-sm-offset-3" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php echo $msg; ?>
+						</div>
+					</section>
+				<?php
+				}
+				?>
 			<!-- </section> -->
 
 			<section>
@@ -32,10 +47,13 @@
 					<fieldset>
 						<legend>Personal Settings</legend>
 					
-						<div class="form-group">
-							<label class="control-lable col-sm-3">Username</label>
+						<div class="form-group has-feedback">
+							<label class="control-lable col-sm-3">User Name</label>
 							<div class="col-sm-6 col-md-5 col-lg-4">
 								<input type="text" class="form-control" name="nuname" id="nuname" value="<?php echo $result['uname']; ?>">
+								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+								<span class="text-danger hidden" id="name_emp">this can't be empty</span>
+								<span class="text-danger hidden" id="not_uniq">username already taken</span>
 							</div>
 						</div>
 

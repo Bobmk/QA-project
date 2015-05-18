@@ -25,6 +25,7 @@ if(isset($_POST['id'],$_POST['pass'])){
 	}else{
 		// $ans["text"]="first checking";
 	}
+	mysqli_close($sqlhandle);
 	echo json_encode($ans);
 }
 
@@ -32,6 +33,20 @@ if(isset($_POST['uid'],$_POST['nuname'],$_POST['submit'])){
 	$uid=$_POST['uid'];
 	$nuname=mysqli_real_escape_string($sqlhandle,trim($_POST['nuname']));
 	unset($_POST['uid'],$_POST['nuname'],$_POST['submit']);
+
+	$search="SELECT * FROM users WHERE uname='{$nuname}'";
+	if(!($res=mysqli_query($sqlhandle,$search))){
+		die(mysqli_connect_error());
+	}else{
+		$answer=mysqli_num_rows($res);
+		mysqli_free_result($res);
+		if($answer){
+			$_SESSION['errmsg']="the username you entered is already taken";
+			mysqli_close($sqlhandle);
+			redirect_to('/users/');
+		}
+	}
+
 	$query="UPDATE users SET uname='{$nuname}'";
 	if(isset($_POST['npass']) && !empty($_POST['npass'])){
 		$npass=password_encrypt($_POST['npass']);
@@ -50,6 +65,7 @@ if(isset($_POST['uid'],$_POST['nuname'],$_POST['submit'])){
 	}
 	$result=mysqli_fetch_assoc($res);
 	mysqli_free_result($res);
+	mysqli_close($sqlhandle);
 	redirect_to('/users/');
 }
 

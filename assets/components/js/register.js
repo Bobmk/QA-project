@@ -11,6 +11,7 @@ $(function(){
 	var name_emp=$('#name_emp');
 	var pass_pat=$('#pass_pat');
 	var em_pat=$('#em_pat');
+	var not_uniq=$('#not_uniq');
 
 //Password Tooltip	 
 	// pass1.tooltip(); // done in main js file
@@ -19,6 +20,13 @@ $(function(){
 // Empty name check
 	name_field.focusin(function(){
 		name_emp.addClass("hidden");
+		not_uniq.addClass('hidden');
+	});
+
+	name_field.focusout(function(){
+		if(name_field.siblings('.glyphicon').hasClass('glyphicon-remove')){
+			not_uniq.removeClass('hidden');
+		}
 	});
 
 // unique name	test
@@ -98,6 +106,10 @@ $(function(){
 	sub.click(function(){
 		if(name_field.val()===""){
 			name_emp.removeClass("hidden");
+			return false;
+		}
+		if(name_field.siblings('.glyphicon').hasClass('glyphicon-remove')){
+			not_uniq.removeClass('hidden');
 			return false;
 		}
 		if(login.val()===""){

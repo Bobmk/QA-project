@@ -20,11 +20,12 @@
 			<form id="reg_form" class="form-horizontal col-sm-offset-2" action="/assets/components/php/process-register.php" method="post" role="form">
 
 				<div class="form-group has-feedback">
-					<label class="control-label col-sm-3">User Name</label>
+					<label class="control-label col-sm-3">Username</label>
 					<div class="col-sm-6 col-md-5 col-lg-4">
-						<input class="form-control" type="text" name="username" id="name" placeholder="User Name (for display)" autocomplete="off">
+						<input class="form-control" type="text" name="username" id="name" placeholder="Username (for display)" autocomplete="off">
 						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 						<span class="text-danger hidden" id="name_emp">this field cannot be empty</span>
+						<span class="text-danger hidden" id="not_uniq">username not available</span>
 					</div>
 				</div>
 				<div class="form-group">
