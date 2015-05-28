@@ -33,6 +33,8 @@ if(isset($_POST['title'],$_POST['content'],$_POST['uid'],$_POST['submit'])){
 			}
 			redirect_to('/');
 		}
+	}else{
+		redirect_to('/');
 	}
 }else{
 	redirect_to('/ask');
