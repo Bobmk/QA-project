@@ -1,5 +1,5 @@
 <?php
-	session_start();
+session_start();
 require_once '../assets/components/php/functions.php';	
 
 $cr=parse_ini_file("../assets/components/credential.ini");

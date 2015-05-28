@@ -103,6 +103,7 @@
 							</div>
 						</div>
 
+						<br>
 						<button type="submit" name="submit" value="Submit" id="submit" class="col-xs-offset-4 col-sm-offset-2 btn btn-primary">Update</button>
 
 					</fieldset>

@@ -3,7 +3,7 @@
 $sort_field="asked";
 if(isset($sort_order)){
 	if($sort_order=="votes"){
-		$sort_field="rank";
+		$sort_field="rank desc, asked";
 	}
 }
 
