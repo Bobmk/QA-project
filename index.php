@@ -175,6 +175,8 @@ require_once 'assets/components/php/functions.php';
 					</nav>
 				</section>
 
+				<a class="btn" id="toTop"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+
 			<?php
 			}else{
 			?>

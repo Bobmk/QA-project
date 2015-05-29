@@ -184,6 +184,8 @@ $encoded_term=urlencode($term);
 								</ul>
 							</nav>
 						</section>
+
+						<a class="btn" id="toTop"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
 				<?php
 					}else{
 				?>
