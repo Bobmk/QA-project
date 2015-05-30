@@ -5,6 +5,7 @@ $(function(){
 	var name_field=$('#name');
 	var login=$('#login_id');
 	var sub=$('#submit');
+	var reset=$('#reset');
 	var email_emp=$('#email_emp');
 	var pass1_emp=$('#pass1_emp');
 	var pass2_emp=$('#pass2_emp');
@@ -13,8 +14,25 @@ $(function(){
 	var em_pat=$('#em_pat');
 	var not_uniq=$('#not_uniq');
 
-//Password Tooltip	 
+// Reset fields
+	reset.click(function() {
+		name_emp.addClass("hidden");
+		not_uniq.addClass('hidden');
+		em_pat.addClass("hidden");
+		email_emp.addClass("hidden");
+		pass_pat.addClass("hidden");
+		pass1_emp.addClass("hidden");
+		pass_danger.addClass("hidden");
+		pass2_emp.addClass("hidden");
+		name_field.parent().parent().removeClass('has-success');
+		name_field.parent().parent().removeClass('has-error');
+		name_field.siblings('.glyphicon').removeClass('glyphicon-ok');
+		name_field.siblings('.glyphicon').removeClass('glyphicon-remove');
+	});
+
+// Password Tooltip	 
 	// pass1.tooltip(); // done in main js file
+	
 	name_field.focus();
 	sub.removeClass('disabled');
 // Empty name check

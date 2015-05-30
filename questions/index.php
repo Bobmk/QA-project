@@ -180,7 +180,7 @@
 				}else{
 				?>
 					<h3>Page not found</h3>
-					<a href="/">return to home page</a>
+					return to <a href="/">home page</a> or <a id="goBack"> previous page</a>
 				<?php
 				}
 				?>			

@@ -41,13 +41,13 @@ session_start();
 
 						<div class="form-group">
 							<label class="control-label col-sm-3">Email</label>
-							<div class="col-sm-6 col-md-5 col-lg-4">
+							<div class="col-sm-6 col-md-5">
 								<input class="form-control" type="text" name="login" id="login" placeholder="Email">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-3">Password</label>
-							<div class="col-sm-6 col-md-5 col-lg-4">
+							<div class="col-sm-6 col-md-5">
 								<input class="form-control" type="password" name="password" id="password" placeholder="Password">
 							</div>
 						</div>
@@ -60,7 +60,7 @@ session_start();
 						?>
 
 						<br>
-						<button type="submit" id="submit" value="Submit" name="submit" class="col-xs-offset-4 col-sm-offset-3 btn btn-default disabled">Login</button>
+						<button type="submit" id="submit" value="Submit" name="submit" class="col-sm-offset-3 col-xs-12 col-sm-6 col-md-5 btn btn-primary disabled">Login</button>
 
 					</form>
 				</section>

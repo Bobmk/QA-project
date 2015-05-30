@@ -49,7 +49,7 @@
 					
 						<div class="form-group has-feedback">
 							<label class="control-lable col-sm-3">User Name</label>
-							<div class="col-sm-6 col-md-5 col-lg-4">
+							<div class="col-sm-6 col-md-5">
 								<input type="text" class="form-control" name="nuname" id="nuname" value="<?php echo $result['uname']; ?>">
 								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 								<span class="text-danger hidden" id="name_emp">this can't be empty</span>
@@ -59,21 +59,21 @@
 
 						<div class="form-group">
 							<label class="control-lable col-sm-3">Questions asked</label>
-							<div class="col-sm-6 col-md-5 col-lg-4">
+							<div class="col-sm-6 col-md-5">
 								<p class="form-control-static"><?php echo $result['q_asked']; ?></p>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-lable col-sm-3">Questions answered</label>
-							<div class="col-sm-6 col-md-5 col-lg-4">
+							<div class="col-sm-6 col-md-5">
 								<p class="form-control-static"><?php echo $result['q_answered']; ?></p>
 							</div>
 						</div>
 
 						<div class="form-group has-feedback">
 							<label class="control-lable col-sm-3">New Password</label>
-							<div class="col-sm-6 col-md-5 col-lg-4">
+							<div class="col-sm-6 col-md-5">
 								<input type="password" class="form-control" name="npass" id="npass" placeholder="enter new password" data-placement="top" data-toggle="tooltip" title="8-20 characters, must contain uppercase, lowercase, digit and symbol">
 								<span class="glyphicon form-control-feedback"></span>
 								<span class="text-danger hidden clearfix" id="pass_pat">match the pattern</span>
@@ -83,7 +83,7 @@
 						</div>
 						<div class="form-group has-feedback">
 							<label class="control-lable col-sm-3">Retype password</label>
-							<div class="col-sm-6 col-md-5 col-lg-4">
+							<div class="col-sm-6 col-md-5">
 								<input type="password" class="form-control" id="rnpass" placeholder="retype new password">
 								<span class="glyphicon form-control-feedback"></span>
 								<span class="text-danger hidden" id="pass_match">match with new password</span>
@@ -95,7 +95,7 @@
 
 						<div class="form-group has-feedback">
 							<label class="control-lable col-sm-3">Current Password</label>
-							<div class="col-sm-6 col-md-5 col-lg-4">
+							<div class="col-sm-6 col-md-5">
 								<input type="password" class="form-control" id="cpass" placeholder="enter current password">
 								<span class="glyphicon form-control-feedback"></span>
 								<span class="text-danger hidden clearfix" id="pass_err">must enter current password</span>
@@ -104,7 +104,7 @@
 						</div>
 
 						<br>
-						<button type="submit" name="submit" value="Submit" id="submit" class="col-xs-offset-4 col-sm-offset-2 btn btn-primary">Update</button>
+						<button type="submit" name="submit" value="Submit" id="submit" class="col-sm-offset-3 col-xs-12 col-sm-6 col-md-5 btn btn-primary">Update</button>
 
 					</fieldset>
 				</form>
