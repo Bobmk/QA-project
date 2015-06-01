@@ -6,7 +6,7 @@ $(function(){
 	msg=$('#msg');
 
 	login.focus();
-	submit.removeClass("disabled");
+	// submit.removeClass("disabled");
 //login button active
 	var interval=setInterval(function(){
 		if(submit.hasClass("disabled")){
