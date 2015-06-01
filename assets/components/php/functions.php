@@ -100,5 +100,12 @@ function diff_time_format($big,$small){
 	return $date_string;
 }
 
+function date_string($d){
+	$date=date_parse($d);
+	$months=array("","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+	$date_string=$months[$date['month']]." ".$date['day'].", ".$date['year'];
+	return $date_string;
+}
+
 
 ?>

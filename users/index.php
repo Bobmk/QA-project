@@ -1,4 +1,7 @@
-<?php require_once "../assets/components/php/profile-snippet.php"; ?>
+<?php
+require_once "../assets/components/php/profile-snippet.php";
+require_once "../assets/components/php/functions.php";
+?>
 <!doctype html>
 <html>
 	<?php require_once "../assets/components/php/head-tag.php"; ?>
@@ -54,6 +57,13 @@
 								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 								<span class="text-danger hidden" id="name_emp">this can't be empty</span>
 								<span class="text-danger hidden" id="not_uniq">username already taken</span>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-lable col-sm-3">Joined</label>
+							<div class="col-sm-6 col-md-5">
+								<p class="form-control-static"><?php echo date_string($result['joined']); ?></p>
 							</div>
 						</div>
 
