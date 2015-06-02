@@ -20,17 +20,6 @@
 				<?php
 				if(isset($_SESSION['user_name'],$_SESSION['user_id'])){
 				?>
-
-					<!-- <li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<span class="glyphicon glyphicon-user"></span> <?php //echo $_SESSION['user_name'] ; ?> <span class="caret"></span>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="profile.php"><span class="glyphicon glyphicon-cog"></span> settings</a></li>
-								<li><a href="components/php/logout.php"><span class="glyphicon glyphicon-log-out"></span> log out</a></li>
-							</ul>
-						</a>
-					</li> -->
-
 					
 					<li><a href="/users/"><span class="glyphicon glyphicon-user hidden-xs" aria-hidden="true"></span> <?php echo $_SESSION['user_name'] ; ?></a></li>
 					<li><a href="/logout/" data-placement="bottom" data-toggle="tooltip" title="Log out"><span class="glyphicon glyphicon-log-out hidden-xs" aria-hidden="true"></span><span class="visible-xs"> Log out</span></a></li>

@@ -53,24 +53,6 @@ if(isset($_GET['qid'])){
 		if(!$ans){
 			$title_present=false;
 		}
-
-		// $max_query="SELECT max(qid) as maxId FROM questions";
-		// $min_query="SELECT min(qid) as minId FROM questions";
-
-		// if(!($max_q=mysqli_query($sqlhandle,$max_query))){
-		// 	echo mysqli_error($sqlhandle);
-		// }else{
-		// 	$max_assoc=mysqli_fetch_assoc($max_q);
-		// 	mysqli_free_result($max_q);
-		// 	$max=$max_assoc['maxId'];
-		// }
-		// if(!($min_q=mysqli_query($sqlhandle,$min_query))){
-		// 	echo mysqli_error($sqlhandle);
-		// }else{
-		// 	$min_assoc=mysqli_fetch_assoc($min_q);
-		// 	mysqli_free_result($min_q);
-		// 	$min=$min_assoc['minId'];
-		// }	
 	}
 }
 

@@ -52,26 +52,6 @@
 						<span class="text-danger hidden" id="pass2_emp">this field cannot be empty</span>
 					</div>
 				</div>
-				<!-- <div class="form-group">
-				<label class="control-label col-sm-2">Gender</label>
-						<label class="radio col-sm-2 col-sm-offset-1">
-							Male <input type="radio" name="gender" value="male">
-						</label>
-						<label class="radio col-sm-2">
-							Female <input type="radio" name="gender" value="female">
-						</label>
-				</div> -->
-				
-				<!-- <div class="form-group">
-					<label for="membership" class="col-sm-2 control-label">Membership</label>
-					<div class="col-xs-10 col-sm-6 col-md-5 col-lg-4">
-						<select name="membership" class="form-control" id="member" data-toggle="popover" data-trigger="focus" data-content="this field cannot be empty">
-							<option value="null" checked>-------</option>
-							<option value="student">Student</option>
-							<option value="teacher">Teacher</option>
-						</select>
-					</div>
-				</div> -->
 
 				<br>
 				<button type="reset" id="reset" class="col-sm-offset-3 col-xs-12 col-sm-6 col-md-5 btn btn-warning">Reset</button><br><br>

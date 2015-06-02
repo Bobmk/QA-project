@@ -1,5 +1,4 @@
 <?php require_once "../assets/components/php/questions-process.php" ; ?>
-
 <!Doctype html>
 <html>
 	<head>
@@ -19,6 +18,19 @@
 
 		<section class="container">
 		
+				<?php 
+				if(isset($_SESSION['errmsg'])){
+					$msg=$_SESSION['errmsg'];
+					$_SESSION['errmsg']=null;
+				?>
+					<section class="clearfix">
+						<div class="alert alert-danger alert-dismissible col-sm-5 col-sm-offset-3" role="alert" id="msg">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php echo $msg; ?>
+						</div>
+					</section>
+				<?php
+				}
+				?>
 
 				<?php
 				if($title_present){
@@ -48,6 +60,7 @@
 										?>
 									<span id="ques_part" data-qid="<?php echo $ans['qid']; ?>" data-update="<?php echo $ques_update; ?>"><?php echo $ans['rank']; ?></span>
 									<button type="button" id="ques_down" class="btn btn-danger" title="It's not helpfull"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>
+									
 								</p>
 							</div><!-- votes part -->
 
@@ -80,6 +93,17 @@
 									}
 								?>
 							</div><!-- user info part -->
+							<?php
+								if(isset($_SESSION['admin']) && $_SESSION['admin']){
+							?>
+									<form action="/assets/components/php/delete-process.php" method="POST" class="pull-left">
+										<input type="hidden" name="qid" value="<?php echo $ans['qid']; ?>">
+										<input type="hidden" name="question" value="true">
+										<button type="submit" name="delete" value="delete" class="btn btn-default btn-sm">Delete question</button>
+									</form>
+							<?php
+								}
+							?>
 
 						</div><!-- panel-body -->
 
@@ -133,6 +157,18 @@
 										echo "answered ".diff_time_format($row['utctime'],$row['answered']);
 									?>
 									</div><!-- user info part -->
+									<?php
+										if(isset($_SESSION['admin']) && $_SESSION['admin']){
+									?>
+											<form action="/assets/components/php/delete-process.php" method="POST" class="pull-left">
+												<input type="hidden" name="qid" value="<?php echo $ans['qid']; ?>">
+												<input type="hidden" name="uid" value="<?php echo $row['uid']; ?>">
+												<input type="hidden" name="answered" value="<?php echo $row['answered']; ?>">
+												<button type="submit" name="delete" value="delete" class="btn btn-default btn-sm">Delete answer</button>
+											</form>
+									<?php
+										}
+									?>
 
 								</div><!-- panel-body -->
 							</section><!-- panel -->
