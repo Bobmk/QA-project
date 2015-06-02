@@ -10,8 +10,10 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
-	<?php require_once "../assets/components/php/head-tag.php"; ?>
-	<title>Login - Q &amp; A</title>
+	<head>
+		<title>Login - Q &amp; A</title>
+		<?php require_once "../assets/components/php/head-tag.php"; ?>
+	</head>
 
 	<body>
 		<?php require_once "../assets/components/php/snippet-header.php"; ?>

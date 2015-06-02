@@ -22,6 +22,13 @@
 				?>
 					
 					<li><a href="/users/"><span class="glyphicon glyphicon-user hidden-xs" aria-hidden="true"></span> <?php echo $_SESSION['user_name'] ; ?></a></li>
+					<?php
+						if(isset($_SESSION['admin']) && $_SESSION['admin']){
+					?>
+						<li><a href="/admins/" data-placement="bottom" data-toggle="tooltip" title="Manage Admins"><span class="glyphicon glyphicon-star hidden-xs" aria-hidden="true"></span><span class="visible-xs"> Manage Admins</span></a></li>
+					<?php
+						}
+					?>
 					<li><a href="/logout/" data-placement="bottom" data-toggle="tooltip" title="Log out"><span class="glyphicon glyphicon-log-out hidden-xs" aria-hidden="true"></span><span class="visible-xs"> Log out</span></a></li>
 
 				<?php
@@ -38,7 +45,7 @@
 
 		<form class="navbar-form navbar-right" role="search" method="GET" action="/search/">
 			<div class="form-group">
-				<input type="search" class="form-control" name="term" placeholder="Search">
+				<input type="search" class="form-control" name="term" placeholder="Search questions">
 			</div>
 		</form>
 		

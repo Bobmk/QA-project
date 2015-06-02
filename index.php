@@ -49,8 +49,10 @@ require_once 'assets/components/php/functions.php';
 ?>
 <!DOCTYPE html>
 <html>
-	<?php include_once "assets/components/php/head-tag.php"; ?>
-	<title>Q &amp; A</title>
+	<head>
+		<title>Q &amp; A</title>
+		<?php include_once "assets/components/php/head-tag.php"; ?>
+	</head>
 
 	<body>
 		<?php include_once "assets/components/php/snippet-header.php"; ?>

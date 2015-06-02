@@ -2,7 +2,6 @@
 <!Doctype html>
 <html>
 	<head>
-		<?php include_once "../assets/components/php/head-tag.php" ;?>
 		<title>
 		<?php
 		if($title_present) 
@@ -11,6 +10,7 @@
 			echo "Page not found";
 		?>
 		 - Q &amp; A</title>
+		<?php include_once "../assets/components/php/head-tag.php" ;?>
 	</head>
 	<body>
 		<?php include_once "../assets/components/php/snippet-header.php"; ?>

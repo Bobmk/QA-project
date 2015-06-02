@@ -1,8 +1,10 @@
 <?php session_start(); ?>
 <!Doctype html>
 <html>
-	<?php require_once "../assets/components/php/head-tag.php"; ?>
-	<title>Register - Q &amp; A</title>
+	<head>
+		<title>Register - Q &amp; A</title>
+		<?php require_once "../assets/components/php/head-tag.php"; ?>
+	</head>
 	<body>
 	<?php require_once "../assets/components/php/snippet-header.php"; ?>
 	

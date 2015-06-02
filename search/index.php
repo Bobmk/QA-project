@@ -54,8 +54,10 @@ $encoded_term=urlencode($term);
 ?>
 <!doctype html>
 <html>
-	<?php include_once "../assets/components/php/head-tag.php"; ?>
-	<title>Search Page - Q &amp; A</title>
+	<head>
+		<title>Search Page - Q &amp; A</title>
+		<?php include_once "../assets/components/php/head-tag.php"; ?>
+	</head>
 	<body>
 		<?php include_once "../assets/components/php/snippet-header.php"; ?>
 		
