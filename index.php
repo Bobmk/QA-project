@@ -20,7 +20,7 @@ $pass=$cr['pass'];
 $db=$cr['db'];
 
 if(!($sqlhandle=mysqli_connect($host,$user,$pass,$db))){
-	echo "Error connecting to database";
+	die(mysqli_error($sqlhandle));
 }
 
 $q_no=20; // no of questions show per page

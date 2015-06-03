@@ -25,7 +25,7 @@
 					<?php
 						if(isset($_SESSION['admin']) && $_SESSION['admin']){
 					?>
-						<li><a href="/admins/" data-placement="bottom" data-toggle="tooltip" title="Manage Admins"><span class="glyphicon glyphicon-star hidden-xs" aria-hidden="true"></span><span class="visible-xs"> Manage Admins</span></a></li>
+						<li><a href="/admins/" data-placement="bottom" data-toggle="tooltip" title="Admins"><span class="glyphicon glyphicon-star hidden-xs" aria-hidden="true"></span><span class="visible-xs"> Admins</span></a></li>
 					<?php
 						}
 					?>
@@ -43,9 +43,9 @@
 					
 		</section><!-- collapse -->
 
-		<form class="navbar-form navbar-right" role="search" method="GET" action="/search/">
+		<form id="search_form" class="navbar-form navbar-right" role="search" method="GET" action="/search/">
 			<div class="form-group">
-				<input type="search" class="form-control" name="term" placeholder="Search questions">
+				<input type="search" id="term" class="form-control" name="term" placeholder="Search questions">
 			</div>
 		</form>
 		

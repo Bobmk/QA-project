@@ -29,4 +29,14 @@ $(function(){
 		}, 800);
 	});
 
+// prevent form submission on empty field
+	var search_form=$('#search_form'),
+		term=$('#term');
+
+	search_form.submit(function(event){
+		if(term.val()===""){
+			event.preventDefault();
+		}
+	});
+
 });

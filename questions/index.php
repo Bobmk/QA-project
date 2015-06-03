@@ -96,7 +96,7 @@
 							<?php
 								if(isset($_SESSION['admin']) && $_SESSION['admin']){
 							?>
-									<form action="/assets/components/php/delete-process.php" method="POST" class="pull-left">
+									<form action="/assets/components/php/delete-process.php" method="POST" class="pull-left" role="form">
 										<input type="hidden" name="qid" value="<?php echo $ans['qid']; ?>">
 										<input type="hidden" name="question" value="true">
 										<button type="submit" name="delete" value="delete" class="btn btn-default btn-sm">Delete question</button>
@@ -160,7 +160,7 @@
 									<?php
 										if(isset($_SESSION['admin']) && $_SESSION['admin']){
 									?>
-											<form action="/assets/components/php/delete-process.php" method="POST" class="pull-left">
+											<form action="/assets/components/php/delete-process.php" method="POST" class="pull-left" role="form">
 												<input type="hidden" name="qid" value="<?php echo $ans['qid']; ?>">
 												<input type="hidden" name="uid" value="<?php echo $row['uid']; ?>">
 												<input type="hidden" name="answered" value="<?php echo $row['answered']; ?>">

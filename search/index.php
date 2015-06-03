@@ -16,11 +16,7 @@ if(isset($_GET['term']) && !empty($_GET['term'])){
 	$term=mysqli_real_escape_string($sqlhandle,trim($_GET['term']));
 	unset($_GET['term']);
 }else{
-	$redir=$_SERVER['HTTP_REFERER'];
-	if($redir=="http://".$_SERVER['HTTP_HOST']."search/index.php"){
-		$redir="/";
-	}
-	redirect_to("$redir");
+	redirect_to("/");
 }
 
 $q_no=20; // no of questions show per page

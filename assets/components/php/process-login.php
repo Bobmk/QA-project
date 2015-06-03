@@ -32,6 +32,7 @@ if(isset($_POST['login'],$_POST['password'],$_POST['submit'])){
 					$_SESSION['user_name']=$result['uname'];
 					$_SESSION['user_id']=$result['uid'];
 					$_SESSION['admin']=($result['admin']==1)?true:false;
+					$_SESSION['superadmin']=($result['superadmin']==1)?true:false;
 					if($target_page){
 						if(isset($_SESSION['get_qid'])){
 							unset($_SESSION['get_qid']);
