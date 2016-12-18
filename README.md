@@ -1,2 +1,2 @@
 # QA-project
-You can access the site from **[here](http://ques-ans.6te.net/)**
+It is a question-answer or forum like site.
